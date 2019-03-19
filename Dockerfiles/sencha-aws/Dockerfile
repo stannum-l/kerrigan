@@ -14,7 +14,7 @@ RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/$VERSION/no-jre/SenchaCmd-$VE
   && ln -s /opt/Sencha/Cmd/$VERSION/sencha /opt/Sencha/sencha \
   && apt-get update && apt-get install -y --no-install-recommends \
     ruby libffi6 python3 python3-pip python3-setuptools build-essential \
-    ruby-dev libffi-dev \
+    ruby-dev libffi-dev nodejs npm \
   && pip3 install --upgrade pip \
   && gem update --system \
   && gem install compass \
