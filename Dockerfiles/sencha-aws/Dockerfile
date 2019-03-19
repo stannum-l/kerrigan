@@ -14,11 +14,13 @@ RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/$VERSION/no-jre/SenchaCmd-$VE
   && ln -s /opt/Sencha/Cmd/$VERSION/sencha /opt/Sencha/sencha \
   && apt-get update && apt-get install -y --no-install-recommends \
     ruby libffi6 python3 python3-pip python3-setuptools build-essential \
-    ruby-dev libffi-dev nodejs npm \
+    ruby-dev libffi-dev curl gnupg \
   && pip3 install --upgrade pip \
+  && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+  && apt-get install -y --no-install-recommends nodejs \
   && gem update --system \
   && gem install compass \
-  && apt-get remove -y ruby-dev build-essential libffi-dev \
+  && apt-get remove -y ruby-dev build-essential libffi-dev gnupg \
   && apt-get autoremove -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
