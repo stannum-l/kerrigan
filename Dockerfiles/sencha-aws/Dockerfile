@@ -1,5 +1,4 @@
 FROM openjdk:8-jre
-
 LABEL maintainer "Tin Lam <tin@irrational.io>"
 
 # ENV VERSION=6.6.0.13
@@ -20,13 +19,9 @@ RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/$VERSION/no-jre/SenchaCmd-$VE
   && apt-get install -y --no-install-recommends nodejs \
   && gem update --system \
   && gem install compass \
-  && apt-get remove -y ruby-dev build-essential libffi-dev gnupg \
-  && apt-get autoremove -y \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN pip3 --no-cache-dir install --upgrade awscli \
-  && apt-get remove -y python3-pip python3-setuptools \
+  && pip3 --no-cache-dir install --upgrade awscli \
+  && apt-get remove -y \
+    ruby-dev build-essential libffi-dev gnupg python3-pip python3-setuptools \
   && apt-get autoremove -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
